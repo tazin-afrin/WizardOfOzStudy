@@ -9,16 +9,15 @@ import itertools
 
 Annotator1 = 'Gold'
 Annotator2 = ''
+boxPath = '/Users/tazinafrin/Box Sync/'
 
 
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap='Reds'):
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap='Reds'):
     """
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
     """
+
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
@@ -180,8 +179,8 @@ def getStatistics():
     omid = False
     tazin = False
     meghan = False
-    t_o = False
-    t_m = True
+    t_o = True
+    t_m = False
     o_m = False
     dataPathGold = "../PracticeDante/HSchool1Gold/"
     if omid:
@@ -194,18 +193,18 @@ def getStatistics():
         dataPathUser = "../PracticeDante/Tazin/"
         Annotator2 = 'Tazin'
     elif t_o:
-        dataPathGold = "../PracticeDante/Tazin/"
-        dataPathUser = "../PracticeDante/Omid/"
+        dataPathGold = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Tazin/"
+        dataPathUser = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Omid/"
         Annotator1 = 'Tazin'
         Annotator2 = 'Omid'
     elif t_m:
-        dataPathGold = "../PracticeDante/Tazin/"
-        dataPathUser = "../PracticeDante/Meghan/"
+        dataPathGold = boxPath+"ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Tazin/"
+        dataPathUser = boxPath+"ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Meghan/"
         Annotator1 = 'Tazin'
         Annotator2 = 'Meghan'
     elif o_m:
-        dataPathGold = "../PracticeDante/Omid/"
-        dataPathUser = "../PracticeDante/Meghan/"
+        dataPathGold = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Omid/"
+        dataPathUser = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Meghan/"
         Annotator1 = 'Omid'
         Annotator2 = 'Meghan'
 
