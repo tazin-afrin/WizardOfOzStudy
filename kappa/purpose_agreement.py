@@ -7,9 +7,10 @@ from sklearn.metrics import cohen_kappa_score
 from sklearn.metrics import confusion_matrix
 import itertools
 
+from config import IAAConfig
+
 Annotator1 = 'Gold'
 Annotator2 = ''
-boxPath = '/Users/tazinafrin/Box Sync/'
 
 
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap='Reds'):
@@ -174,42 +175,32 @@ def findAgreements(df_fan, df_huma):
     plt.show()
 
 
+
 def getStatistics():
     global Annotator1, Annotator2
-    omid = False
-    tazin = False
-    meghan = False
+
     t_o = True
     t_m = False
     o_m = False
-    dataPathGold = "../PracticeDante/HSchool1Gold/"
-    if omid:
-        dataPathUser = "../PracticeDante/Omid/"
-        Annotator2 = 'Omid'
-    elif meghan:
-        dataPathUser = "../PracticeDante/Meghan/"
-        Annotator2 = 'Meghan'
-    elif tazin:
-        dataPathUser = "../PracticeDante/Tazin/"
-        Annotator2 = 'Tazin'
-    elif t_o:
-        dataPathGold = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Tazin/"
-        dataPathUser = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Omid/"
-        Annotator1 = 'Tazin'
-        Annotator2 = 'Omid'
-    elif t_m:
-        dataPathGold = boxPath+"ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Tazin/"
-        dataPathUser = boxPath+"ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Meghan/"
-        Annotator1 = 'Tazin'
-        Annotator2 = 'Meghan'
-    elif o_m:
-        dataPathGold = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Omid/"
-        dataPathUser = boxPath + "ArgRewrite NSF 2017/Datasets/ArgRewritePilot2018/Meghan/"
-        Annotator1 = 'Omid'
-        Annotator2 = 'Meghan'
 
-    # dataPathFan = "../../Annotations/ESL_annotated_Fan"
-    # dataPathHuma = "../../Annotations/ESL_annotated_Huma"
+    dataPathGold = ''
+    dataPathUser = ''
+
+    if t_o:
+        dataPathGold = IAAConfig.boxPath + IAAConfig.annotator1_path
+        dataPathUser = IAAConfig.boxPath + IAAConfig.annotator2_path
+        Annotator1 = IAAConfig.annotator1
+        Annotator2 = IAAConfig.annotator2
+    elif t_m:
+        dataPathGold = IAAConfig.boxPath + IAAConfig.annotator1_path
+        dataPathUser = IAAConfig.boxPath + IAAConfig.annotator3_path
+        Annotator1 = IAAConfig.annotator1
+        Annotator2 = IAAConfig.annotator3
+    elif o_m:
+        dataPathGold = IAAConfig.boxPath + IAAConfig.annotator2_path
+        dataPathUser = IAAConfig.boxPath + IAAConfig.annotator3_path
+        Annotator1 = IAAConfig.annotator2
+        Annotator2 = IAAConfig.annotator3
 
 
     # 1. read all the excel files of Huma and Fan
