@@ -37,11 +37,11 @@ def read_draft2(filename):
         reader = csv.DictReader(csvfile)
         data = list(reader)
         fields = reader.fieldnames
-
+        print(fields)
 
 if __name__ == '__main__':
 
-    draft = 1
+    draft = 2
     name = '-'
     cond = filesConfig.condB
     outputfile = 'draft1_2018argrewrite_2.txt'
