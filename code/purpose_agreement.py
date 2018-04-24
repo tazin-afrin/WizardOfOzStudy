@@ -9,7 +9,7 @@ import itertools
 
 from config import IAAConfig
 
-Annotator1 = 'Gold'
+Annotator1 = ''
 Annotator2 = ''
 
 

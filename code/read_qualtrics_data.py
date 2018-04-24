@@ -15,12 +15,12 @@ def read_draft1(filename):
         fields = reader.fieldnames
 
         for row in data:
-            if row['RecipientFirstName'] == name:
+            if row['RecipientEmail'] == email:# or row['Q9'] == name:
                 print(row['RecipientFirstName'],row['RecipientLastName'],row['RecipientEmail'])
                 # this is the answer for step 2 to check if participants read the provided material
                 print(row['Q38'])
 
-                save_draft(cond + outputfile, row['Q8'])
+                # save_draft(cond + outputfile, row['Q8'])
 
                 print('\n\n')
                 # essay = row['Q8'].split("\n")
@@ -37,16 +37,27 @@ def read_draft2(filename):
         reader = csv.DictReader(csvfile)
         data = list(reader)
         fields = reader.fieldnames
-        print(fields)
+
+        for row in data:
+            if row['RecipientEmail'] == email:
+                print(row['RecipientFirstName'],row['RecipientLastName'],row['RecipientEmail'])
+                # this is the answer for step 2 to check if participants read the provided material
+                essay = row['Q5']
+
+                save_draft(cond + outputfile, essay)
+                break
+
 
 if __name__ == '__main__':
 
-    draft = 2
-    name = '-'
-    cond = filesConfig.condB
-    outputfile = 'draft1_2018argrewrite_2.txt'
+    draft = '1'
+    print(draft)
+    email = 'chl243@pitt.edu'
+    # email = '@gmail.com'
+    cond = filesConfig.essayRev12
+    outputfile = 'draft2_2018argrewrite_#.txt'
 
-    if draft == 1:
+    if draft == '1':
         read_draft1(filesConfig.draft1_file)
-    else:
+    elif draft == '2':
         read_draft2(filesConfig.draft2_file)
